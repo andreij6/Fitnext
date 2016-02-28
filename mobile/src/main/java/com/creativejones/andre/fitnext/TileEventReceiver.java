@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.creativejones.andre.fitnext.ui.MainActivity;
 import com.microsoft.band.tiles.TileEvent;
 
 public class TileEventReceiver extends BroadcastReceiver {
