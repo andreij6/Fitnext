@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\andre\\Desktop\\Microsoft Band SDK and Samples for Android\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\andre\\Desktop\\Microsoft Band SDK and Samples for Android\\Fitnext\\mobile\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.4.0\\res\\raw\\gtm_analytics"
+    },
+    {
+        "merged": "C:\\Users\\andre\\Desktop\\Microsoft Band SDK and Samples for Android\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\raw\\b_icon.png",
+        "source": "C:\\Users\\andre\\Desktop\\Microsoft Band SDK and Samples for Android\\Fitnext\\mobile\\src\\main\\res\\raw\\b_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\raw\\gtm_analytics",
+        "source": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-analytics\\8.4.0\\res\\raw\\gtm_analytics"
+    },
+    {
+        "merged": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\raw\\b_icon.png",
+        "source": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\src\\main\\res\\raw\\b_icon.png"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\andre\\Desktop\\Microsoft Band SDK and Samples for Android\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\layout-v17\\mr_media_route_list_item.xml",
+        "source": "C:\\Users\\andre\\Desktop\\Microsoft Band SDK and Samples for Android\\Fitnext\\mobile\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\layout-v17\\mr_media_route_list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\layout-v17\\mr_media_route_list_item.xml",
+        "source": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\23.0.0\\res\\layout-v17\\mr_media_route_list_item.xml"
+    }
+]
