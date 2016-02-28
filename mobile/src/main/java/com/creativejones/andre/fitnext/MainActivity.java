@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     private BandClient mClient = null;
     private static final UUID tileId = UUID.randomUUID();
     private static final UUID pageId1 = UUID.randomUUID();
+    
 
     List<String> mExercises = new ArrayList<>();
     int mExerciseIndex = 0;
