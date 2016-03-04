@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="schematic-0.6.4">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/mobile/build/intermediates/exploded-aar/net.simonvt.schematic/schematic/0.6.4/res" />
+      <root url="jar://$PROJECT_DIR$/mobile/build/intermediates/exploded-aar/net.simonvt.schematic/schematic/0.6.4/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.simonvt.schematic/schematic/0.6.4/83c236a987bdab3725154906e71285dfc1f5a321/schematic-0.6.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

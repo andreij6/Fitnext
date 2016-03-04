@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mFab = (FloatingActionButton) findViewById(R.id.fab);
         mStart = (Button)findViewById(R.id.start);
         mStop = (Button)findViewById(R.id.stop);
 

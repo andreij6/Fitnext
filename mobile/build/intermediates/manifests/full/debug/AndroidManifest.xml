@@ -30,7 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.creativejones.andre.fitnext.MainActivity"
+            android:name="com.creativejones.andre.fitnext.ui.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>

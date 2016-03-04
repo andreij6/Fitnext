@@ -832,16 +832,16 @@
         "source": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-hdpi\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_plusone_tall_off_client.png",
-        "source": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\8.4.0\\res\\drawable-hdpi\\ic_plusone_tall_off_client.png"
-    },
-    {
         "merged": "C:\\Users\\andre\\Desktop\\Microsoft Band SDK and Samples for Android\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\common_ic_googleplayservices.png",
         "source": "C:\\Users\\andre\\Desktop\\Microsoft Band SDK and Samples for Android\\Fitnext\\mobile\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable-hdpi\\common_ic_googleplayservices.png"
     },
     {
         "merged": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
         "source": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-hdpi\\abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_plusone_tall_off_client.png",
+        "source": "C:\\Users\\andre\\Desktop\\Fitnext\\mobile\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\8.4.0\\res\\drawable-hdpi\\ic_plusone_tall_off_client.png"
     },
     {
         "merged": "C:\\Users\\andre\\Desktop\\Microsoft Band SDK and Samples for Android\\Fitnext\\mobile\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\common_plus_signin_btn_text_dark_normal.9.png",
