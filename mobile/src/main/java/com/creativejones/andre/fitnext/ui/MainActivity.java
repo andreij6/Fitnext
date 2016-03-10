@@ -17,10 +17,6 @@ import android.widget.Button;
 import com.creativejones.andre.fitnext.R;
 import com.creativejones.andre.fitnext.band.IFitwearable;
 import com.creativejones.andre.fitnext.band.implementations.MicrosoftBandFitWearable;
-import com.microsoft.band.BandIOException;
-import com.microsoft.band.tiles.pages.PageData;
-import com.microsoft.band.tiles.pages.TextBlockData;
-import com.microsoft.band.tiles.pages.TextButtonData;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.creativejones.andre.fitnext.R;
 import com.creativejones.andre.fitnext.band.IFitwearable;
@@ -235,7 +234,6 @@ public class MicrosoftBandFitWearable implements IFitwearable {
             try {
                 if (getConnectedBandClient()) {
                     removeTile();
-                } else {
                 }
             } catch (BandException e) {
                 handleBandException(e);
