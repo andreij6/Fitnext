@@ -24,7 +24,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, IFitwearable.Listener{
 
-    IFitwearable mFitWearable;
+    private IFitwearable mFitWearable;
 
     List<String> mExercises = new ArrayList<>();
     int mExerciseIndex = 0;
