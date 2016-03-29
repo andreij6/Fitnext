@@ -1,9 +1,8 @@
-package com.creativejones.andre.fitnext.ui;
+package com.creativejones.andre.fitnext.app;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,17 +16,13 @@ import android.widget.Button;
 import com.creativejones.andre.fitnext.R;
 import com.creativejones.andre.fitnext.band.IFitwearable;
 import com.creativejones.andre.fitnext.band.implementations.MicrosoftBandFitWearable;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.creativejones.andre.fitnext.data.Workout;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, IFitwearable.Listener{
 
-    private IFitwearable mFitWearable;
-
-    List<String> mExercises = new ArrayList<>();
-    int mExerciseIndex = 0;
+    private IFitwearable mFitWearable = new MicrosoftBandFitWearable(this);
+    private Workout mWorkout = new Workout();
 
     Button mStart;
     Button mStop;
@@ -39,33 +34,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mFitWearable = new MicrosoftBandFitWearable(this);
-
         mStart = (Button)findViewById(R.id.start);
         mStop = (Button)findViewById(R.id.stop);
-
-        mExercises.add("Push Ups 4x20");
-        mExercises.add("Set Ups 5x20");
-        mExercises.add("V Ups 5x20");
-        mExercises.add("Bench 5x20");
-        mExercises.add("Curls 5x20");
-        mExercises.add("Squats 5x20");
-
-        mStart.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                mFitWearable.connectAsync();
-            }
-        });
-
-        mStop.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                mFitWearable.disconnectAsync();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -76,6 +46,16 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+    //region OnClickListeners
+    public void disconnectBand(){
+        mFitWearable.connectAsync();
+    }
+
+    public void connectBand(){
+        mFitWearable.disconnectAsync();
+    }
+    //endregion
 
     @Override
     public void onBackPressed() {
@@ -158,15 +138,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public String nextExercise() {
-        String result = mExercises.get(mExerciseIndex);
-
-        mExerciseIndex++;
-
-        if(mExerciseIndex >= mExercises.size()){
-            mExerciseIndex = 0;
-        }
-
-        return result;
+        return mWorkout.nextExercise();
     }
 
     @Override

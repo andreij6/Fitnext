@@ -10,7 +10,7 @@ import android.os.AsyncTask;
 
 import com.creativejones.andre.fitnext.R;
 import com.creativejones.andre.fitnext.band.IFitwearable;
-import com.creativejones.andre.fitnext.ui.MainActivity;
+import com.creativejones.andre.fitnext.app.MainActivity;
 import com.microsoft.band.BandClient;
 import com.microsoft.band.BandClientManager;
 import com.microsoft.band.BandException;

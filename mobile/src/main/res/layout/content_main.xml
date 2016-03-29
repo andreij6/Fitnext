@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.MainActivity"
+    tools:context=".app.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <Button
@@ -20,7 +20,8 @@
         android:id="@+id/start"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="198dp"/>
+        android:layout_marginTop="198dp"
+        android:onClick="connectBand"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -28,5 +29,6 @@
         android:text="Stop"
         android:id="@+id/stop"
         android:layout_alignTop="@+id/start"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:onClick="disconnectBand"/>
 </RelativeLayout>
