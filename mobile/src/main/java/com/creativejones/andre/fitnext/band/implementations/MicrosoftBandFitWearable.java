@@ -51,23 +51,23 @@ public class MicrosoftBandFitWearable implements IFitwearable {
     @Override
     public void processIntent(Intent intent) {
 
-        String extraString = intent.getStringExtra(getString(R.string.intent_key));
+        if(isValidBandIntent(intent)){
 
-        if(extraString != null && extraString.equals(getString(R.string.intent_value))){
-            if (intent.getAction() == TileEvent.ACTION_TILE_OPENED) {
-                TileEvent tileOpenData = intent.getParcelableExtra(TileEvent.TILE_EVENT_DATA);
+            String intentAction = intent.getAction();
+            TileEvent tileEvent = intent.getParcelableExtra(TileEvent.TILE_EVENT_DATA);
 
-            } else if (intent.getAction() == TileEvent.ACTION_TILE_BUTTON_PRESSED) {
-                TileButtonEvent buttonData = intent.getParcelableExtra(TileEvent.TILE_EVENT_DATA);
-                try {
-                    updatePages();
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-
-            } else if (intent.getAction() == TileEvent.ACTION_TILE_CLOSED) {
-                TileEvent tileCloseData = intent.getParcelableExtra(TileEvent.TILE_EVENT_DATA);
-
+            switch (intentAction){
+                case TileEvent.ACTION_TILE_OPENED:
+                    tileOpened(tileEvent);
+                    break;
+                case TileEvent.ACTION_TILE_BUTTON_PRESSED:
+                    tileButtonPressed((TileButtonEvent)tileEvent);
+                    break;
+                case TileEvent.ACTION_TILE_CLOSED:
+                    tileClosed(tileEvent);
+                    break;
+                default:
+                    break;
             }
         }
     }
@@ -77,9 +77,7 @@ public class MicrosoftBandFitWearable implements IFitwearable {
         if(mClient != null){
             try{
                 mClient.disconnect().await();
-            } catch (InterruptedException e){
-
-            } catch (BandException b){
+            } catch (BandException | InterruptedException e){
 
             }
         }
@@ -97,6 +95,23 @@ public class MicrosoftBandFitWearable implements IFitwearable {
     //endregion
 
     //region Helpers
+    private boolean isValidBandIntent(Intent intent) {
+        String extraString = intent.getStringExtra(getString(R.string.intent_key));
+        return extraString != null && extraString.equals(getString(R.string.intent_value));
+    }
+
+    private void tileOpened(TileEvent event){
+
+    }
+
+    private void tileClosed(TileEvent event){
+
+    }
+
+    private void tileButtonPressed(TileButtonEvent event){
+
+    }
+
     private void updatePages() throws BandIOException {
         mClient.getTileManager().setPages(tileId,
                 new PageData(pageId1, 0)
@@ -153,27 +168,29 @@ public class MicrosoftBandFitWearable implements IFitwearable {
     }
 
     private boolean addTile() throws Exception {
-        if (doesTileExist()) {
-            return true;
+        boolean isTileAdded = true;
+
+        if (!doesTileExist()) {
+            /* Set the options */
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inScaled = false;
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            Bitmap tileIcon = BitmapFactory.decodeResource(mContext.getResources(), R.raw.b_icon, options);
+
+            BandTile tile = new BandTile.Builder(tileId, "Exercise Title", tileIcon)
+                    .setPageLayouts(createButtonLayout())
+                    .build();
+
+            if (mClient.getTileManager().addTile((Activity)mContext, tile).await()) {
+                mListener.userMessage("Button Tile is added.\n");
+            } else {
+                mListener.userMessage("Unable to add button tile to the band.\n");
+                isTileAdded = false;
+            }
         }
 
-		/* Set the options */
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inScaled = false;
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        Bitmap tileIcon = BitmapFactory.decodeResource(mContext.getResources(), R.raw.b_icon, options);
+        return isTileAdded;
 
-        BandTile tile = new BandTile.Builder(tileId, "Exercise Title", tileIcon)
-                .setPageLayouts(createButtonLayout())
-                .build();
-
-        if (mClient.getTileManager().addTile((Activity)mContext, tile).await()) {
-            mListener.userMessage("Button Tile is added.\n");
-            return true;
-        } else {
-            mListener.userMessage("Unable to add button tile to the band.\n");
-            return false;
-        }
     }
 
     private void removeTile() throws InterruptedException, BandException {
@@ -199,50 +216,54 @@ public class MicrosoftBandFitWearable implements IFitwearable {
 
     private class StartTask extends AsyncTask<Void, Void, Boolean> {
 
+        String whyBandCantConnectMessage;
+        boolean isBandConnected = false;
+
         @Override
         protected Boolean doInBackground(Void... params) {
             try {
                 if (getConnectedBandClient()) {
                     if (addTile()) {
                         updatePages();
+                        isBandConnected = true;
                     } else {
-                        mListener.userMessage("Unable to Add Tile to band");
+                        whyBandCantConnectMessage = "Unable to Add Tile to band";
                     }
                 } else {
-                    mListener.userMessage("Unable to Connect to band");
-                    return false;
+                    whyBandCantConnectMessage = "Unable to Connect to band";
                 }
             } catch (BandException e) {
                 handleBandException(e);
-                return false;
-            } catch (Exception e) {
-                return false;
+            } finally {
+                return isBandConnected;
             }
-
-            return true;
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
+            if(!result){
+                mListener.userMessage(whyBandCantConnectMessage);
+            }
+
             mListener.onConnected(result);
         }
     }
 
     private class StopTask extends AsyncTask<Void, Void, Boolean> {
+        boolean isConnectionStopped  = false;
+
         @Override
         protected Boolean doInBackground(Void... params) {
             try {
                 if (getConnectedBandClient()) {
                     removeTile();
+                    isConnectionStopped = true;
                 }
             } catch (BandException e) {
                 handleBandException(e);
-                return false;
-            } catch (Exception e) {
-                return false;
+            } finally {
+                return isConnectionStopped;
             }
-
-            return true;
         }
     }
 }
